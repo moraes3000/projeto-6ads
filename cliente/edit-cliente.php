@@ -21,31 +21,25 @@ if (isset ($_POST['name'])) {
     $cli_rua = $_POST['cli_rua'];
     $cli_cnpj_cpf = $_POST['cli_cnpj_cpf'];
     $cli_numero = $_POST['cli_numero'];
+
     $cli_cidade = $_POST['cli_cidade'];
     $cli_estado = $_POST['cli_estado'];
     $cli_referencia = $_POST['cli_referencia'];
     $cli_bairro = $_POST['cli_bairro'];
 
-    $sql = 'UPDATE cliente SET cli_nome=:name WHERE cli_id=:id';
-    $for_cep = $_POST['for_cep'];
-    $for_rua = $_POST['for_rua'];
-    $for_cnpj_cpf = $_POST['for_cnpj_cpf'];
-    $for_numero = $_POST['for_numero'];
-    $for_cidade = $_POST['for_cidade'];
-    $for_estado = $_POST['for_estado'];
-    $for_referencia = $_POST['for_referencia'];
-    $for_bairro = $_POST['for_bairro'];
 
-    $sql = 'UPDATE fornecedor SET 
-            for_nome=:name,
-            for_cep = :for_cep,
-            for_rua = :for_rua,
-            for_cnpj_cpf = :for_cnpj_cpf,
-            for_numero = :for_numero,
-            for_cidade = :for_cidade,
-            for_estado = :for_estado,
-            for_referencia = :for_referencia,
-            for_bairro = :for_bairro
+
+
+    $sql = 'UPDATE cliente SET 
+            cli_nome=:name,   
+            cli_cep=:cli_cep,
+            cli_rua=:cli_rua,
+            cli_cnpj_cpf=:cli_cnpj_cpf,
+            cli_numero=:cli_numero,
+            cli_cidade=:cli_cidade,
+            cli_estado=:cli_estado,
+            cli_referencia=:cli_referencia,
+            cli_bairro=:cli_bairro
             
             
             
@@ -53,21 +47,21 @@ if (isset ($_POST['name'])) {
             
             
  
- WHERE for_id=:id';
+ WHERE cli_id=:id';
 
     $statement = $conn->prepare($sql);
     if ($statement->execute([
         ':name' => $name,
-        ':for_cep' => $for_cep,
-        ':for_rua' => $for_rua,
-        ':for_cnpj_cpf' => $for_cnpj_cpf,
-        ':for_numero' => $for_numero,
-        ':for_cidade' => $for_cidade,
-        ':for_estado' => $for_estado,
-        ':for_referencia' => $for_referencia,
-        ':for_bairro' => $for_bairro,
+        ':cli_cep' => $cli_cep,
+        ':cli_rua' => $cli_rua,
+        ':cli_cnpj_cpf' => $cli_cnpj_cpf,
+        ':cli_numero' => $cli_numero,
+        ':cli_cidade' => $cli_cidade,
+        ':cli_estado' => $cli_estado,
+        ':cli_referencia' => $cli_referencia,
+        ':cli_bairro' => $cli_bairro,
 
-        ':id' => $id
+        ':id' => $id]));
     $statement = $conn->prepare($sql);
     if ($statement->execute([':name' => $name, ':id' => $id])) {
         $redirect = "http://127.0.0.1/estoque/categoria/lista-categoria.php";
