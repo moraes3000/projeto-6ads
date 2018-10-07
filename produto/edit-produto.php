@@ -18,18 +18,24 @@ $row = $statement->fetch(PDO::FETCH_OBJ);
 if (isset ($_POST['name'])) {
     $name = $_POST['name'];
 
-//    $descricao = $_POST['descricao'];
+    $descricao = $_POST['descricao'];
 
-//    $pro_quantidade_atual = $_POST['pro_quantidade_atual'];
-//    $pro_quantidade_minima = $_POST['pro_quantidade_minima'];
-//    $pro_quantidade_maxima = $_POST['pro_quantidade_maxima'];
-//    $pro_venda = $_POST['pro_venda'];
-//    $pro_compra = $_POST['pro_compra'];
+    $pro_quantidade_atual = $_POST['pro_quantidade_atual'];
+    $pro_quantidade_minima = $_POST['pro_quantidade_minima'];
+    $pro_quantidade_maxima = $_POST['pro_quantidade_maxima'];
+    $pro_venda = $_POST['pro_venda'];
+    $pro_compra = $_POST['pro_compra'];
 //    $cat_id = $_POST['cat_id'];
 
     $sql = 'UPDATE produto SET 
 
-pro_nome = :name,
+    pro_nome = :name,
+    pro_descricao = :descricao,
+    pro_quantidade_atual = :pro_quantidade_atual,
+    pro_quantidade_minima = :pro_quantidade_minima,
+    pro_quantidade_maxima = :pro_quantidade_maxima,
+    pro_venda = :pro_venda,
+    pro_compra =:pro_compra
 
  
  WHERE pro_id=:id';
@@ -37,7 +43,13 @@ pro_nome = :name,
     if ($statement->execute([
 
         ':name' => $name,
-//        'descricao' =>$descricao,
+        'descricao' =>$descricao,
+        ':pro_quantidade_atual' => $pro_quantidade_atual,
+        ':pro_quantidade_minima' => $pro_quantidade_minima,
+        ':pro_quantidade_maxima' => $pro_quantidade_maxima,
+        ':pro_venda' => $pro_venda,
+        ':pro_compra' => $pro_compra,
+
 
         ':id' => $id])) {
         $redirect = "http://127.0.0.1/estoque/categoria/lista-categoria.php";
