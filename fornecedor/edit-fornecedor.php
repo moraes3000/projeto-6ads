@@ -17,18 +17,33 @@ $statement->execute([':id' => $id ]);
 $row = $statement->fetch(PDO::FETCH_OBJ);
 if (isset ($_POST['name'])) {
     $name = $_POST['name'];
-//    $for_cep = $_POST['for_cep'];
-//    $for_rua = $_POST['for_rua'];
-//    $for_cnpj_cpf = $_POST['for_cnpj_cpf'];
-//    $for_numero = $_POST['for_numero'];
-//    $for_cidade = $_POST['for_cidade'];
-//    $for_estado = $_POST['for_estado'];
-//    $for_referencia = $_POST['for_referencia'];
-//    $for_bairro = $_POST['for_bairro'];
+    $for_cep = $_POST['for_cep'];
+    $for_rua = $_POST['for_rua'];
+    $for_cnpj_cpf = $_POST['for_cnpj_cpf'];
+    $for_numero = $_POST['for_numero'];
+
+    $for_cidade = $_POST['for_cidade'];
+    $for_estado = $_POST['for_estado'];
+    $for_referencia = $_POST['for_referencia'];
+    $for_bairro = $_POST['for_bairro'];
+
+
+
 
     $sql = 'UPDATE fornecedor SET 
-            for_nome=:name,
-      
+            for_nome=:name,   
+            for_cep=:for_cep,
+            for_rua=:for_rua,
+            for_cnpj_cpf=:for_cnpj_cpf,
+            for_numero=:for_numero,
+            for_cidade=:for_cidade,
+            for_estado=:for_estado,
+            for_referencia=:for_referencia,
+            for_bairro=:for_bairro
+            
+            
+            
+            
             
             
  
@@ -36,11 +51,20 @@ if (isset ($_POST['name'])) {
 
     $statement = $conn->prepare($sql);
     if ($statement->execute([
-            ':name' => $name,
+        ':name' => $name,
+        ':for_cep' => $for_cep,
+        ':for_rua' => $for_rua,
+        ':for_cnpj_cpf' => $for_cnpj_cpf,
+        ':for_numero' => $for_numero,
+        ':for_cidade' => $for_cidade,
+        ':for_estado' => $for_estado,
+        ':for_referencia' => $for_referencia,
+        ':for_bairro' => $for_bairro,
 
-            ':id' => $id
-    ])) {
-        $redirect = "http://127.0.0.1/estoque/categoria/lista-categoria.php";
+        ':id' => $id]));
+    $statement = $conn->prepare($sql);
+    if ($statement->execute([':name' => $name, ':id' => $id])) {
+        $redirect = "lista-categoria.php";
         header("Location: $redirect");
     }
 }
@@ -49,7 +73,7 @@ if (isset ($_POST['name'])) {
 <div class="container">
     <div class="card mt-5">
         <div class="card-header">
-            <h2>Editar Forncedor</h2>
+            <h2>Editar Categoria</h2>
         </div>
         <div class="card-body">
             <?php if(!empty($message)): ?>
@@ -138,14 +162,87 @@ if (isset ($_POST['name'])) {
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-info">Editar Forncedor</button>
+                    <button type="submit" class="btn btn-info">Editar cliente</button>
                 </div>
             </form>
         </div>
     </div>
-<!--    --><?php //echo  'id = '. $id;?>
-<!--    --><?php //echo  'nome = '. $name;?>
-<!--    --><?php //echo  'sql = '. $sql;?>
+    <!--script de  trazer o cep-->
+    <script type="text/javascript" >
+
+        function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('for_rua').value=("");
+            document.getElementById('for_bairro').value=("");
+            document.getElementById('for_cidade').value=("");
+            document.getElementById('for_estado').value=("");
+
+        }
+
+        function meu_callback(conteudo) {
+            if (!("erro" in conteudo)) {
+                //Atualiza os campos com os valores.
+                document.getElementById('for_rua').value=(conteudo.logradouro);
+                document.getElementById('for_bairro').value=(conteudo.bairro);
+                document.getElementById('for_cidade').value=(conteudo.localidade);
+                document.getElementById('for_estado').value=(conteudo.uf);
+
+            } //end if.
+            else {
+                //CEP não Encontrado.
+                limpa_formulário_cep();
+                alert("CEP não encontrado.");
+            }
+        }
+
+        function pesquisacep(valor) {
+
+            //Nova variável "cep" somente com dígitos.
+            var cep = valor.replace(/\D/g, '');
+
+            //Verifica se campo cep possui valor informado.
+            if (cep != "") {
+
+                //Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+
+                //Valida o formato do CEP.
+                if(validacep.test(cep)) {
+
+                    //Preenche os campos com "..." enquanto consulta webservice.
+                    document.getElementById('for_rua').value="...";
+                    document.getElementById('for_bairro').value="...";
+                    document.getElementById('for_cidade').value="...";
+                    document.getElementById('for_estado').value="...";
+
+
+                    //Cria um elemento javascript.
+                    var script = document.createElement('script');
+
+                    //Sincroniza com o callback.
+                    script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                    //Insere script no documento e carrega o conteúdo.
+                    document.body.appendChild(script);
+
+                } //end if.
+                else {
+                    //cep é inválido.
+                    limpa_formulário_cep();
+                    alert("Formato de CEP inválido.");
+                }
+            } //end if.
+            else {
+                //cep sem valor, limpa formulário.
+                limpa_formulário_cep();
+            }
+        };
+
+    </script>
+    <!--    final cep-->
+    <!--    --><?php //echo  'id = '. $id;?>
+    <!--    --><?php //echo  'nome = '. $name;?>
+    <!--    --><?php //echo  'sql = '. $sql;?>
 </div>
 <?php require '../base/footer.php';
 

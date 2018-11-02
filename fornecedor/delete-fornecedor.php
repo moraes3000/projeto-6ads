@@ -12,6 +12,6 @@ $id = $_GET['id'];
 $sql = 'DELETE FROM fornecedor WHERE for_id=:id';
 $statement = $conn->prepare($sql);
 if ($statement->execute([':id' => $id])) {
-    $redirect = "http://localhost/estoque/fornecedor/list-fornecedor.php";
+    $redirect = "list-fornecedor.php";
     header("Location: $redirect");
 }

@@ -3,47 +3,57 @@
  * Created by PhpStorm.
  * User: bruno
  * Date: 29/09/2018
- * Time: 20:48
+ * Time: 21:00
  */
 
+
+
+//
 require '../conexao/conexao.php';
-$message = '';
-if (isset ($_POST['name'])  ) {
-    $name = $_POST['name'];
-
-    $sql = 'INSERT INTO categoria(cat_nome) VALUES(:name)';
-    $statement = $conn->prepare($sql);
-    if ($statement->execute([':name' => $name])) {
-        $message = 'Categoria cadastrada';
-    }
-}
-?>
-<?php require '../base/header.php'; ?>
+require '../base/header.php';
+$sql = 'SELECT * FROM produto';
+$statement = $conn->prepare($sql);
+$statement->execute();
+$rows = $statement->fetchAll(PDO::FETCH_OBJ); ?>
     <div class="container">
-        <div class="card mt-5">
-            <div class="card-header">
-                <h2>Cadastro de Categoria de produtos</h2>
-            </div>
-            <div class="card-body">
-                <?php if(!empty($message)): ?>
-                    <div class="alert alert-success">
-                        <?= $message; ?>
-                    </div>
-                <?php endif; ?>
-                <form method="post">
-                    <div class="form-group">
-                        <label for="name">Nome da categoria</label>
-                        <input type="text" name="name" id="name" class="form-control">
-                    </div>
+        <h1 class="display-4">Lista de Produto</h1>
+        <table class="table table-striped table-bordered  table-hover">
+            <thead class="thead-dark">
 
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Cadastrar Categoria</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+            <tr>
+                <th scope="col">Cod</th>
+                <th scope="col">Nome</th>
+                <!--                <th scope="col">Foto</th>-->
+
+                <th scope="col">Ação</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            <?php foreach($rows as $row): ?>
+                <tr>
+                    <td><?= $row->pro_id; ?></td>
+                    <td><?= $row->pro_nome; ?></td>
+
+                    <!--                    <td scope="row">--><?php //  echo $row->pro_id;?><!--</td>-->
+
+
+                    <td>
+                        <a href="carrinho.php?add=carrinho&id=<?= $row->pro_id ?>" >  <i class="fas fa-edit "></i></a>
+                        <a onclick="return confirm('Deseja remover esse item')" href="delete-produto.php?id=<?= $row->pro_id ?>" class=''> <i class="fas fa-trash-alt float-right"></i></a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+
+
+            </tr>
+
+            </tbody>
+        </table>
+        <a href="cad-produto.php" class="btn btn-primary" >Add Produto</a>
     </div>
-
-
 
 <?php require '../base/footer.php'; ?>

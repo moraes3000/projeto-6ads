@@ -25,17 +25,17 @@
                         <a class="nav-link" href="
                         login.php">Home <span class="sr-only">(current)</span></a>
                     </li>
-<!--                    <li class="nav-item dropdown">-->
-<!--                        <a class="nav-link dropdown-toggle" href="#" id="Venda" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                            Venda-->
-<!--                        </a>-->
-<!--                        <div class="dropdown-menu" aria-labelledby="Venda">-->
-<!--                            <a class="dropdown-item" href="venda.php">Cadastrar</a>-->
-<!--                            <a class="dropdown-item" href="#">Listar</a>-->
-<!---->
-<!--                        </div>-->
-<!--                    </li>-->
-<!--                    cliente CR  D-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="Venda" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Venda
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="Venda">
+                            <a class="dropdown-item" href="../venda/cad-venda.php">Cadastrar</a>
+                            <a class="dropdown-item" href="#">Listar</a>
+
+                        </div>
+                    </li>
+<!--                    cliente CRUD-->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="Cliente" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Cliente
@@ -47,38 +47,39 @@
                         </div>
                     </li>
 <!--  PRODUTO CRuD  -->
-<!--                    <li class="nav-item dropdown">-->
-<!--                        <a class="nav-link dropdown-toggle" href="#" id="Produto" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                            Produto-->
-<!--                        </a>-->
-<!--                        <div class="dropdown-menu" aria-labelledby="Produto">-->
-<!--                            <a class="dropdown-item" href="../produto/cad-produto.php">Cadastrar</a>-->
-<!--                            <a class="dropdown-item" href="../produto/list-produto.php">Listar</a>-->
-<!---->
-<!--                        </div>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item dropdown">-->
-<!--                        <a class="nav-link dropdown-toggle" href="#" id="Fornecedor" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                            Fornecedor-->
-<!--                        </a>-->
-<!--                        <div class="dropdown-menu" aria-labelledby="Fornecedor">-->
-<!--                            <a class="dropdown-item" href="../fornecedor/cad-fornecedor.php">Cadastrar</a>-->
-<!--                            <a class="dropdown-item" href="../fornecedor/list-fornecedor.php">Listar</a>-->
-<!---->
-<!--                        </div>-->
-<!--                    </li>-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="Produto" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Produto
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="Produto">
+                            <a class="dropdown-item" href="../produto/cad-produto.php">Cadastrar</a>
+                            <a class="dropdown-item" href="../produto/list-produto.php">Listar</a>
+
+                        </div>
+                    </li>
+<!--                    Fornecedor CRUD-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="Fornecedor" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Fornecedor
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="Fornecedor">
+                            <a class="dropdown-item" href="../fornecedor/cad-fornecedor.php">Cadastrar</a>
+                            <a class="dropdown-item" href="../fornecedor/list-fornecedor.php">Listar</a>
+
+                        </div>
+                    </li>
 
 <!--                    CATEGORIA TA FUNCIONANDO  O CRUD-->
-<!--                    <li class="nav-item dropdown">-->
-<!--                        <a class="nav-link dropdown-toggle" href="#" id="Fornecedor" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                            Categoria-->
-<!--                        </a>-->
-<!--                        <div class="dropdown-menu" aria-labelledby="Categoria">-->
-<!--                            <a class="dropdown-item" href="../categoria/cad-categoria.php">Cadastrar</a>-->
-<!--                            <a class="dropdown-item" href="../categoria/lista-categoria.php">Listar</a>-->
-<!---->
-<!--                        </div>-->
-<!--                    </li>-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="Fornecedor" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categoria
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="Categoria">
+                            <a class="dropdown-item" href="../categoria/cad-categoria.php">Cadastrar</a>
+                            <a class="dropdown-item" href="../categoria/lista-categoria.php">Listar</a>
+
+                        </div>
+                    </li>
 
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">

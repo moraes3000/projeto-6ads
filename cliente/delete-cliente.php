@@ -12,6 +12,6 @@ $id = $_GET['id'];
 $sql = 'DELETE FROM cliente WHERE cli_id=:id';
 $statement = $conn->prepare($sql);
 if ($statement->execute([':id' => $id])) {
-    $redirect = "http://localhost/estoque/cliente/list-cliente.php";
+    $redirect = "list-cliente.php";
     header("Location: $redirect");
 }
