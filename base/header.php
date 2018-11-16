@@ -30,7 +30,7 @@
                             Venda
                         </a>
                         <div class="dropdown-menu" aria-labelledby="Venda">
-                            <a class="dropdown-item" href="../venda/cad-venda.php">Cadastrar</a>
+                            <a class="dropdown-item" href="../carrinho-compra/index.php">Cadastrar</a>
                             <a class="dropdown-item" href="#">Listar</a>
 
                         </div>

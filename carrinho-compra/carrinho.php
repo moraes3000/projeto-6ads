@@ -40,12 +40,7 @@
 </head>
 <body>
 	<div class="container">
-		<div class="card mt-5">
-			 <div class="card-body">
-	    		<h4 class="card-title">Carrinho</h4>
-	    		<a href="index.php">Lista de Produtos</a>
-	    	</div>
-		</div>
+        <h1 class="display-4">Carrinho de compra</h1>
 
 		<?php if($resultsCarts) : ?>
 			<form action="carrinho.php?acao=up" method="post">

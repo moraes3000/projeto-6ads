@@ -2,16 +2,11 @@
 require_once "functions/product.php";
 $pdoConnection = require_once "connection.php";
 $products = getProducts($pdoConnection);
-?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-	<meta charset="UTF-8">
-	<title>Carrinho de Compras</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
 
-</head>
-<body>
+?>
+<?php require '../base/header.php'; ?>
+
+
 
 	<div class="container">
 
@@ -35,8 +30,8 @@ $products = getProducts($pdoConnection);
                 <tr>
                     <td><?php echo $product['pro_id']?></td>
                     <td><?php echo $product['pro_nome']?></td>
-                    <td>	R$<?php echo number_format($product['pro_venda'], 2, ',', '.')?></td>
-                    <td> <a class="btn btn-primary" href="carrinho.php?acao=add&id=<?php echo $product['pro_id']?>" class="card-link">Comprar</a></td>
+                    <td>R$<?php echo number_format($product['pro_venda'], 2, ',', '.')?></td>
+                    <td> <a class="" href="carrinho.php?acao=add&id=<?php echo $product['pro_id']?>">Adicionar ao carrinho</a></td>
 
                 </tr>
                 <?php endforeach;?>
@@ -45,6 +40,5 @@ $products = getProducts($pdoConnection);
 
 		</div>
 	</div>
-	
-</body>
-</html>
+
+<?php require '../base/footer.php'; ?>
