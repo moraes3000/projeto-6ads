@@ -12,23 +12,37 @@ $products = getProducts($pdoConnection);
 
 </head>
 <body>
+
 	<div class="container">
-		<div class="row">
-			<?php foreach($products as $product) : ?>
-				<div class="col-4">
-					<div class="card">
-						<div class="card-body">
-							 <h4 class="card-title"><?php echo $product['pro_nome']?></h4>
-							 <h6 class="card-subtitle mb-2 text-muted">
-							  	R$<?php echo number_format($product['pro_venda'], 2, ',', '.')?>
-							 </h6>
 
-							 <a class="btn btn-primary" href="carrinho.php?acao=add&id=<?php echo $product['pro_id']?>" class="card-link">Comprar</a>
-						</div>
-					</div>
-				</div>
+            <h1 class="display-4">Lista de Produto</h1>
 
-			<?php endforeach;?>
+            <table class="table table-striped table-bordered  table-hover">
+                <thead class="thead-dark">
+
+                <tr>
+                    <th scope="col">Cod</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Preço</th>
+
+                    <th scope="col">Ação</th>
+
+                </tr>
+
+                </thead>
+                <tbody>
+                <?php foreach($products as $product) : ?>
+                <tr>
+                    <td><?php echo $product['pro_id']?></td>
+                    <td><?php echo $product['pro_nome']?></td>
+                    <td>	R$<?php echo number_format($product['pro_venda'], 2, ',', '.')?></td>
+                    <td> <a class="btn btn-primary" href="carrinho.php?acao=add&id=<?php echo $product['pro_id']?>" class="card-link">Comprar</a></td>
+
+                </tr>
+                <?php endforeach;?>
+                </tbody>
+
+
 		</div>
 	</div>
 	

@@ -11,12 +11,15 @@
 //
 require '../conexao/conexao.php';
 require '../base/header.php';
-$sql = 'SELECT * FROM produto';
+
+//$sql = "SELECT * FROM `produto` WHERE pro_nome LIKE '%$pesquisa%'";
+$sql = "SELECT * FROM produto";
 $statement = $conn->prepare($sql);
 $statement->execute();
 $rows = $statement->fetchAll(PDO::FETCH_OBJ); ?>
     <div class="container">
         <h1 class="display-4">Lista de Produto</h1>
+
         <table class="table table-striped table-bordered  table-hover">
             <thead class="thead-dark">
 
