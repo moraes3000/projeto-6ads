@@ -76,3 +76,6 @@ $rows = $statement->fetchAll(PDO::FETCH_OBJ); ?>
     </table>
     <a href="cad-cliente.php" class="btn btn-primary" >Add Fornecedor</a>
 </div>
+
+
+<?php require '../base/footer.php'; ?>
