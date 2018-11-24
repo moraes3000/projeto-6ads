@@ -30,31 +30,25 @@
 
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
-
-</head>
-<body>
+<?php require '../base/header.php'; ?>
 	<div class="container">
         <h1 class="display-4">Carrinho de compra</h1>
 
 		<?php if($resultsCarts) : ?>
 			<form action="carrinho.php?acao=up" method="post">
-			<table class="table table-strip">
-				<thead>
-					<tr>
-						<th>Produto</th>
-<!--						<th>Quantidade</th>-->
-						<th>Preço</th>
-						<th>Subtotal</th>
-						<th>Ação</th>
+			<table class="table table-striped table-bordered  table-hover"">
+                <thead class="thead-dark">
 
-					</tr>				
-				</thead>
+                    <tr>
+                        <th scope="col">Cod</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Preço</th>
+
+                        <th scope="col">Ação</th>
+
+                    </tr>
+
+                </thead>
 				<tbody>
 				  <?php foreach($resultsCarts as $result) : ?>
 					<tr>
@@ -86,6 +80,4 @@
 	<?php endif?>
 		
 	</div>
-	
-</body>
-</html>
+<?php require '../base/footer.php'; ?>
