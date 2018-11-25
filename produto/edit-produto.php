@@ -52,7 +52,7 @@ if (isset ($_POST['name'])) {
 
 
         ':id' => $id])) {
-        $redirect = "http://127.0.0.1/estoque/categoria/lista-categoria.php";
+        $redirect = "list-produto.php";
         header("Location: $redirect");
     }
 }
@@ -126,9 +126,9 @@ if (isset ($_POST['name'])) {
             </form>
         </div>
     </div>
-    <?php echo  'id = '. $id;?>
-    <?php echo  'nome = '. $name;?>
-    <?php echo  'sql = '. $sql;?>
+<!--    --><?php //echo  'id = '. $id;?>
+<!--    --><?php //echo  'nome = '. $name;?>
+<!--    --><?php //echo  'sql = '. $sql;?>
 </div>
 <?php require '../base/footer.php';
 

@@ -12,6 +12,6 @@ $id = $_GET['id'];
 $sql = 'DELETE FROM produto WHERE pro_id=:id';
 $statement = $conn->prepare($sql);
 if ($statement->execute([':id' => $id])) {
-    $redirect = "http://127.0.0.1/estoque/produto/list-produto.php";
+    $redirect = "list-produto.php";
     header("Location: $redirect");
 }

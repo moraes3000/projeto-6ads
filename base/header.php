@@ -46,17 +46,7 @@
 
                         </div>
                     </li>
-<!--  PRODUTO CRuD  -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="Produto" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Produto
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="Produto">
-                            <a class="dropdown-item" href="../produto/cad-produto.php">Cadastrar</a>
-                            <a class="dropdown-item" href="../produto/list-produto.php">Listar</a>
 
-                        </div>
-                    </li>
 <!--                    Fornecedor CRUD-->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="Fornecedor" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -70,6 +60,17 @@
                     </li>
 
 <!--                    CATEGORIA TA FUNCIONANDO  O CRUD-->
+                    <!--  PRODUTO CRuD  -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="Produto" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Produto
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="Produto">
+                            <a class="dropdown-item" href="../produto/cad-produto.php">Cadastrar</a>
+                            <a class="dropdown-item" href="../produto/list-produto.php">Listar</a>
+
+                        </div>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="Fornecedor" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Categoria
