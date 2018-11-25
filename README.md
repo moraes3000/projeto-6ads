@@ -387,3 +387,14 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 <hr>
+
+
+Modelo do git usado desenvolver o projeto:<br>
+https://github.com/polodev/youtube-php-crud
+<br>
+Tutorial Youtube CRUD PDO:<br>
+https://www.youtube.com/watch?feature=player_embedded&v=MYhw4-Bc-oM
+<br>
+
+Artigo para ler implementar no projeto <br>
+https://www.devmedia.com.br/implementando-controle-de-estoque-no-mysql-com-triggers-e-procedures/26352
