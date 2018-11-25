@@ -20,6 +20,10 @@ if (isset ($_POST['name'])  ) {
     $cli_estado = $_POST['cli_estado'];
     $cli_referencia = $_POST['cli_referencia'];
     $cli_bairro = $_POST['cli_bairro'];
+    $cli_cel = $_POST['cli_cel'];
+    $cli_tel = $_POST['cli_tel'];
+    $cli_site = $_POST['cli_site'];
+    $cli_email= $_POST['cli_email'];
 //    $name = $_POST['name'];
 //    $name = $_POST['name'];
 
@@ -31,7 +35,12 @@ if (isset ($_POST['name'])  ) {
                         cli_numero,
                         cli_cidade,
                         cli_estado,
-                        cli_referencia
+                        cli_referencia,
+                        cli_cel,
+                        cli_bairro,
+                        cli_tel,
+                        cli_site,
+                        cli_email
                         ) 
                     VALUES(
                         :name,
@@ -41,7 +50,12 @@ if (isset ($_POST['name'])  ) {
                         :cli_numero,
                         :cli_cidade,
                         :cli_estado,
-                        :cli_referencia
+                        :cli_referencia,
+                        :cli_cel,
+                        :cli_bairro,
+                        :cli_tel,
+                        :cli_site,
+                        :cli_email
                         
                         )';
 
@@ -56,6 +70,11 @@ if (isset ($_POST['name'])  ) {
         ':cli_cidade' => $cli_cidade,
         ':cli_estado' => $cli_estado,
         ':cli_referencia' => $cli_referencia,
+        ':cli_cel' =>$cli_cel,
+        ':cli_bairro'=>$cli_bairro,
+        ':cli_tel'=>$cli_tel,
+        ':cli_site'=>$cli_site,
+        ':cli_email'=>$cli_email,
 
 
     ])) {
@@ -79,6 +98,24 @@ if (isset ($_POST['name'])  ) {
             <div class="form-group">
                 <label for="name">Nome da categoria</label>
                 <input type="text" name="name" id="name" class="form-control">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="cli_tel">Telefone</label>
+                    <input type="text" name="cli_tel" id="cli_tel" class="form-control" oninput="mascara(this, 'tel')">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="cli_cel">Celular</label>
+                    <input type="text" name="cli_cel" id="cli_cel" class="form-control"  oninput="mascara(this, 'tel')">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="cli_email">E-mail</label>
+                    <input type="email" name="cli_email" id="cli_email" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="cli_site">Site</label>
+                    <input type="text" name="cli_site" id="cli_site" class="form-control">
+                </div>
             </div>
 
             <div class="form-row">
@@ -255,7 +292,43 @@ if (isset ($_POST['name'])  ) {
 
 
 
+    <script type="text/javascript" >
+        function mascara(i,t){
 
+            var v = i.value;
+
+
+            if(t == "cpf"){
+                i.setAttribute("maxlength", "14");
+                if (v.length == 3 || v.length == 7) i.value += ".";
+                if (v.length == 11) i.value += "-";
+            }
+
+            if(t == "cnpj"){
+                i.setAttribute("maxlength", "18");
+                if (v.length == 2 || v.length == 6) i.value += ".";
+                if (v.length == 10) i.value += "/";
+                if (v.length == 15) i.value += "-";
+            }
+
+            if(t == "cep"){
+                i.setAttribute("maxlength", "9");
+                if (v.length == 5) i.value += "-";
+            }
+
+            if(t == "tel"){
+                if(v[0] == 9){
+                    i.setAttribute("maxlength", "10");
+                    if (v.length == 5) i.value += "-";
+                }else{
+                    i.setAttribute("maxlength", "9");
+                    if (v.length == 4) i.value += "-";
+                }
+            }
+
+        }
+
+    </script>
 
 
 

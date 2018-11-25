@@ -9,7 +9,7 @@
 
 require '../conexao/conexao.php';
 require '../base/header.php';
-$redirect = "   lista-categoria.php";
+$redirect = "/lista-categoria.php";
 $id = $_GET['id'];
 $sql = 'SELECT * FROM cliente WHERE cli_id=:id';
 $statement = $conn->prepare($sql);
@@ -21,11 +21,14 @@ if (isset ($_POST['name'])) {
     $cli_rua = $_POST['cli_rua'];
     $cli_cnpj_cpf = $_POST['cli_cnpj_cpf'];
     $cli_numero = $_POST['cli_numero'];
-
     $cli_cidade = $_POST['cli_cidade'];
     $cli_estado = $_POST['cli_estado'];
     $cli_referencia = $_POST['cli_referencia'];
     $cli_bairro = $_POST['cli_bairro'];
+    $cli_cel = $_POST['cli_cel'];
+    $cli_tel = $_POST['cli_tel'];
+    $cli_site = $_POST['cli_site'];
+    $cli_email= $_POST['cli_email'];
 
 
 
@@ -38,14 +41,12 @@ if (isset ($_POST['name'])) {
             cli_numero=:cli_numero,
             cli_cidade=:cli_cidade,
             cli_estado=:cli_estado,
-            cli_referencia=:cli_referencia
-           
-            
-            
-            
-            
-            
-            
+            cli_referencia=:cli_referencia,
+            cli_bairro=:cli_bairro,
+            cli_cel=:cli_cel,
+            cli_tel=:cli_tel,
+            cli_site=:cli_site,
+            cli_email=:cli_email   
  
  WHERE cli_id=:id';
 
@@ -59,12 +60,17 @@ if (isset ($_POST['name'])) {
         ':cli_cidade' => $cli_cidade,
         ':cli_estado' => $cli_estado,
         ':cli_referencia' => $cli_referencia,
+        ':cli_cel' =>$cli_cel,
+        ':cli_bairro'=>$cli_bairro,
+        ':cli_tel'=>$cli_tel,
+        ':cli_site'=>$cli_site,
+        ':cli_email'=>$cli_email,
 
 
         ':id' => $id]));
     $statement = $conn->prepare($sql);
     if ($statement->execute([':name' => $name, ':id' => $id])) {
-        $redirect = "http://127.0.0.1/estoque/categoria/lista-categoria.php";
+        $redirect = "lista-categoria.php";
         header("Location: $redirect");
     }
 }
@@ -85,6 +91,24 @@ if (isset ($_POST['name'])) {
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input value="<?= $row->cli_nome; ?>" type="text" name="name" id="name" class="form-control">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="cli_tel">Telefone</label>
+                        <input type="text" name="cli_tel" id="cli_tel" class="form-control" oninput="mascara(this, 'tel')">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="cli_cel">Celular</label>
+                        <input type="text" name="cli_cel" id="cli_cel" class="form-control"  oninput="mascara(this, 'tel')">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="cli_email">E-mail</label>
+                        <input type="email" name="cli_email" id="cli_email" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="cli_site">Site</label>
+                        <input type="text" name="cli_site" id="cli_site" class="form-control">
+                    </div>
                 </div>
 
 

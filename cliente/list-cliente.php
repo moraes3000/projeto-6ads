@@ -58,9 +58,9 @@ $rows = $statement->fetchAll(PDO::FETCH_OBJ); ?>
 
                 <td><?= $row->cli_referencia; ?></td>
 
-                <td>FK</td>
-                <td>FK</td>
-                <td>FK</td>
+                <td><?= $row->cli_tel; ?></td>
+                <td><?= $row->cli_cel; ?></td>
+                <td><?= $row->cli_email; ?></td>
 
                 <td>
                     <a href="edit-cliente.php?id=<?= $row->cli_id ?>" >  <i class="fas fa-edit "></i></a>
