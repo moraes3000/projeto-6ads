@@ -31,8 +31,7 @@ if (isset ($_POST['name'])  ) {
                         cli_numero,
                         cli_cidade,
                         cli_estado,
-                        cli_referencia,
-                        cli_bairro
+                        cli_referencia
                         ) 
                     VALUES(
                         :name,
@@ -42,8 +41,7 @@ if (isset ($_POST['name'])  ) {
                         :cli_numero,
                         :cli_cidade,
                         :cli_estado,
-                        :cli_referencia,
-                        :cli_bairro
+                        :cli_referencia
                         
                         )';
 
@@ -58,7 +56,7 @@ if (isset ($_POST['name'])  ) {
         ':cli_cidade' => $cli_cidade,
         ':cli_estado' => $cli_estado,
         ':cli_referencia' => $cli_referencia,
-        ':cli_bairro' => $cli_bairro
+
 
     ])) {
         $message = 'Categoria cadastrada';

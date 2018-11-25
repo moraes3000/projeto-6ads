@@ -9,7 +9,7 @@
 
 require '../conexao/conexao.php';
 require '../base/header.php';
-$redirect = "127.0.0.1/estoque/categoria/lista-categoria.php";
+$redirect = "   lista-categoria.php";
 $id = $_GET['id'];
 $sql = 'SELECT * FROM cliente WHERE cli_id=:id';
 $statement = $conn->prepare($sql);
@@ -38,8 +38,8 @@ if (isset ($_POST['name'])) {
             cli_numero=:cli_numero,
             cli_cidade=:cli_cidade,
             cli_estado=:cli_estado,
-            cli_referencia=:cli_referencia,
-            cli_bairro=:cli_bairro
+            cli_referencia=:cli_referencia
+           
             
             
             
@@ -59,7 +59,7 @@ if (isset ($_POST['name'])) {
         ':cli_cidade' => $cli_cidade,
         ':cli_estado' => $cli_estado,
         ':cli_referencia' => $cli_referencia,
-        ':cli_bairro' => $cli_bairro,
+
 
         ':id' => $id]));
     $statement = $conn->prepare($sql);
@@ -73,7 +73,7 @@ if (isset ($_POST['name'])) {
 <div class="container">
     <div class="card mt-5">
         <div class="card-header">
-            <h2>Editar Categoria</h2>
+            <h2>Editar Cliente</h2>
         </div>
         <div class="card-body">
             <?php if(!empty($message)): ?>
