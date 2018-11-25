@@ -31,7 +31,7 @@ $rows = $statement->fetchAll(PDO::FETCH_OBJ); ?>
                     <th scope="col">Cod</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Preço</th>
-
+                    <th scope="col">Quantidade Estoque Atual</th>
                     <th scope="col">Ação</th>
 
                 </tr>
@@ -42,8 +42,28 @@ $rows = $statement->fetchAll(PDO::FETCH_OBJ); ?>
                     <tr>
                         <td><?= $row->pro_id; ?></td>
                         <td><?= $row->pro_nome; ?></td>
+                        <td scope="row" class="
+                        <?php if($row->pro_quantidade_atual > $row->pro_quantidade_minima ) {
+                            echo 'text-success';
+                        }
+                        else{
+                            echo  'text-danger';
+                        } ?>">
+
+                            <?php   echo $row->pro_quantidade_atual;?>
+                        </td>
                         <td>R$<?php echo number_format($row->pro_venda, 2, ',', '.')?></td>
-                        <td> <a class="" href="carrinho.php?acao=add&id=<?php echo $row->pro_id;?>">Adicionar ao carrinho</a></td>
+                        <td>
+                            <a class="btn <?php if($row->pro_quantidade_atual > $row->pro_quantidade_minima) {
+                                echo 'btn-success';
+                            }
+                            else{
+                                echo  'btn-danger disabled';
+                            } ?>"
+                               href="carrinho.php?acao=add&id=<?php echo $row->pro_id;?>">Adicionar ao carrinho</a>
+
+
+                        </td>
 
                     </tr>
                 <?php endforeach; ?>
