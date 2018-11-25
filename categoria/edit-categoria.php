@@ -21,7 +21,7 @@ if (isset ($_POST['name'])) {
   $sql = 'UPDATE categoria SET cat_nome=:name WHERE cat_id=:id';
   $statement = $conn->prepare($sql);
   if ($statement->execute([':name' => $name, ':id' => $id])) {
-      $redirect = "http://127.0.0.1/estoque/categoria/lista-categoria.php";
+      $redirect = "lista-categoria.php";
       header("Location: $redirect");
   }
 }
@@ -50,9 +50,9 @@ if (isset ($_POST['name'])) {
       </form>
     </div>
   </div>
-   <?php echo  'id = '. $id;?>
-    <?php echo  'nome = '. $name;?>
-    <?php echo  'sql = '. $sql;?>
+<!--   --><?php //echo  'id = '. $id;?>
+<!--    --><?php //echo  'nome = '. $name;?>
+<!--    --><?php //echo  'sql = '. $sql;?>
 </div>
 <?php require '../base/footer.php';
 
