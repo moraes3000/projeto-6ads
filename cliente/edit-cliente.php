@@ -95,19 +95,19 @@ if (isset ($_POST['name'])) {
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="cli_tel">Telefone</label>
-                        <input type="text" name="cli_tel" id="cli_tel" class="form-control" oninput="mascara(this, 'tel')">
+                        <input type="text" name="cli_tel" id="cli_tel" class="form-control" oninput="mascara(this, 'tel')" value="<?= $row->cli_tel; ?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="cli_cel">Celular</label>
-                        <input type="text" name="cli_cel" id="cli_cel" class="form-control"  oninput="mascara(this, 'tel')">
+                        <input type="text" name="cli_cel" id="cli_cel" class="form-control"  oninput="mascara(this, 'tel')" value="<?= $row->cli_cel;?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="cli_email">E-mail</label>
-                        <input type="email" name="cli_email" id="cli_email" class="form-control">
+                        <input type="email" name="cli_email" id="cli_email" class="form-control" value="<?= $row->cli_email; ?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="cli_site">Site</label>
-                        <input type="text" name="cli_site" id="cli_site" class="form-control">
+                        <input type="text" name="cli_site" id="cli_site" class="form-control" value="<?= $row->cli_site; ?>">
                     </div>
                 </div>
 
