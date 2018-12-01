@@ -36,11 +36,14 @@ if(count($_SESSION['itens']) == 0){
         $select->execute();
         $produtos = $select->fetchAll();
         $total = $quantidade * $produtos[0]['pro_venda'];
-
+        echo 'id: '.$produtos[0]['pro_id']."<br>";
         echo 'nome: '.$produtos[0]['pro_nome']."<br>";
         echo 'venda: '.$produtos[0]['pro_venda']."<br>";
         echo 'quantidade: '.$quantidade."<br>";
+
+        echo '<a href="remover.php?remover=carrinho&id='.$idProduto.'">remover item</a>';
         echo 'total: '.$total."<hr>";
+/*        <a href="carrinho.php?add=carrinho&id=<?php echo $row->pro_id;?>">Adicionar ao carrinho</a>*/
 
     }
     echo "<a href='venda.php'>add item</a>";
