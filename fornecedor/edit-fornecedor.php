@@ -9,7 +9,7 @@
 
 require '../conexao/conexao.php';
 require '../base/header.php';
-$redirect = "127.0.0.1/estoque/categoria/lista-categoria.php";
+$redirect = "/lista-categoria.php";
 $id = $_GET['id'];
 $sql = 'SELECT * FROM fornecedor WHERE for_id=:id';
 $statement = $conn->prepare($sql);
@@ -21,11 +21,14 @@ if (isset ($_POST['name'])) {
     $for_rua = $_POST['for_rua'];
     $for_cnpj_cpf = $_POST['for_cnpj_cpf'];
     $for_numero = $_POST['for_numero'];
-
     $for_cidade = $_POST['for_cidade'];
     $for_estado = $_POST['for_estado'];
     $for_referencia = $_POST['for_referencia'];
     $for_bairro = $_POST['for_bairro'];
+    $for_cel = $_POST['for_cel'];
+    $for_tel = $_POST['for_tel'];
+    $for_site = $_POST['for_site'];
+    $for_email= $_POST['for_email'];
 
 
 
@@ -39,13 +42,11 @@ if (isset ($_POST['name'])) {
             for_cidade=:for_cidade,
             for_estado=:for_estado,
             for_referencia=:for_referencia,
-            for_bairro=:for_bairro
-            
-            
-            
-            
-            
-            
+            for_bairro=:for_bairro,
+            for_cel=:for_cel,
+            for_tel=:for_tel,
+            for_site=:for_site,
+            for_email=:for_email   
  
  WHERE for_id=:id';
 
@@ -59,7 +60,12 @@ if (isset ($_POST['name'])) {
         ':for_cidade' => $for_cidade,
         ':for_estado' => $for_estado,
         ':for_referencia' => $for_referencia,
-        ':for_bairro' => $for_bairro,
+        ':for_cel' =>$for_cel,
+        ':for_bairro'=>$for_bairro,
+        ':for_tel'=>$for_tel,
+        ':for_site'=>$for_site,
+        ':for_email'=>$for_email,
+
 
         ':id' => $id]));
     $statement = $conn->prepare($sql);
@@ -73,7 +79,7 @@ if (isset ($_POST['name'])) {
 <div class="container">
     <div class="card mt-5">
         <div class="card-header">
-            <h2>Editar Categoria</h2>
+            <h2>Editar fornecedor</h2>
         </div>
         <div class="card-body">
             <?php if(!empty($message)): ?>
@@ -85,6 +91,24 @@ if (isset ($_POST['name'])) {
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input value="<?= $row->for_nome; ?>" type="text" name="name" id="name" class="form-control">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="for_tel">Telefone</label>
+                        <input type="text" name="for_tel" id="for_tel" class="form-control" oninput="mascara(this, 'tel')">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="for_cel">Celular</label>
+                        <input type="text" name="for_cel" id="for_cel" class="form-control"  oninput="mascara(this, 'tel')">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="for_email">E-mail</label>
+                        <input type="email" name="for_email" id="for_email" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="for_site">Site</label>
+                        <input type="text" name="for_site" id="for_site" class="form-control">
+                    </div>
                 </div>
 
 
@@ -162,7 +186,7 @@ if (isset ($_POST['name'])) {
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-info">Editar cliente</button>
+                    <button type="submit" class="btn btn-info">Editar fornecedor</button>
                 </div>
             </form>
         </div>

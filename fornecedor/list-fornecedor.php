@@ -3,8 +3,9 @@
  * Created by PhpStorm.
  * User: bruno
  * Date: 30/09/2018
- * Time: 10:53
+ * Time: 10:59
  */
+
 
 require '../conexao/conexao.php';
 require '../base/header.php';
@@ -13,9 +14,7 @@ $statement = $conn->prepare($sql);
 $statement->execute();
 $rows = $statement->fetchAll(PDO::FETCH_OBJ); ?>
     <div class="container">
-        <div class="card-header">
-            <h2>Cadastro de Produto</h2>
-        </div>
+        <h1 class="display-4">Lista de fornecedor</h1>
         <table class="table table-striped table-bordered  table-hover">
             <thead class="thead-dark">
 
@@ -52,16 +51,16 @@ $rows = $statement->fetchAll(PDO::FETCH_OBJ); ?>
 
                     <td><?= $row->for_cnpj_cpf	; ?></td>
                     <td><?= $row->for_numero; ?></td>
-                    <td><?= $row->for_cep; ?></td>
+                    <td><?= $row->for_rua; ?></td>
 
                     <td><?= $row->for_cidade; ?></td>
                     <td><?= $row->for_estado; ?></td>
 
                     <td><?= $row->for_referencia; ?></td>
 
-                    <td>FK</td>
-                    <td>FK</td>
-                    <td>FK</td>
+                    <td><?= $row->for_tel; ?></td>
+                    <td><?= $row->for_cel; ?></td>
+                    <td><?= $row->for_email; ?></td>
 
                     <td>
                         <a href="edit-fornecedor.php?id=<?= $row->for_id ?>" >  <i class="fas fa-edit "></i></a>
@@ -77,5 +76,6 @@ $rows = $statement->fetchAll(PDO::FETCH_OBJ); ?>
         </table>
         <a href="cad-fornecedor.php" class="btn btn-primary" >Add Fornecedor</a>
     </div>
+
 
 <?php require '../base/footer.php'; ?>
