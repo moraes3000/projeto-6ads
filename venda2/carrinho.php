@@ -28,7 +28,7 @@ if(count($_SESSION['itens']) == 0){
     echo "Carrinho vazio <br> <a href='venda.php'>Add item</a>";
 }else{
     require '../conexao/conexao.php';
-    $_SESSION['dados'] = array();
+
     foreach ($_SESSION['itens'] as $idProduto => $quantidade ){
         $sql = "SELECT * FROM produto WHERE  pro_id=? ";
         $select = $conn->prepare($sql);
@@ -44,23 +44,9 @@ if(count($_SESSION['itens']) == 0){
         echo '<a href="remover.php?remover=carrinho&id='.$idProduto.'">remover item</a>';
         echo 'total: '.$total."<hr>";
 /*        <a href="carrinho.php?add=carrinho&id=<?php echo $row->pro_id;?>">Adicionar ao carrinho</a>*/
-        array_push($_SESSION['dados'],
-        array(
-            'id_produto' => $idProduto,
-            'quantidade' => $produtos[0]['pro_quantidade_atual'],
-            'preco' =>$produtos[0]['pro_venda'],
-            'total' => $total
-            )
 
-
-        );
-//
     }
-//    echo '<pre>';
-//        var_dump($_SESSION['dados']);
-//        echo '</pre>';
-    echo "<a href='venda.php'>add item</a>.<br>";
-    echo "<a href='finalizar.php'>Finalizar Pedido</a>";
+    echo "<a href='venda.php'>add item</a>";
 
 }
 
