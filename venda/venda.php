@@ -57,8 +57,10 @@ $rows = $statement->fetchAll(PDO::FETCH_OBJ); ?>
                         <a class="btn <?php if($row->pro_quantidade_atual > $row->pro_quantidade_minima) {
                             echo 'btn-success';
                         }
-                        else{
-                            echo  'btn-danger disabled';
+                        elseif ($row->pro_quantidade_atual <=0){
+                            echo  'btn-danger  disabled';
+                        }else{
+                            echo  'btn-danger ';
                         } ?>"
                         <a href="carrinho.php?add=carrinho&id=<?php echo $row->pro_id;?>">Adicionar ao carrinho</a>
 
