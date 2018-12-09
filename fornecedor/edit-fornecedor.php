@@ -177,7 +177,9 @@ if (isset ($_POST['name'])) {
                     </div>
                     <div class="form-group col-md-12">
                         <label for="c-bairro">Referencia</label>
-                        <input type="text" class="form-control" id="for_referencia" placeholder="" name="for_referencia"   value="<?= $row->for_referencia; ?>">
+<!--                        <input type="text" class="form-control" id="for_referencia" placeholder="" name="for_referencia"   value="">-->
+                        <textarea class="form-control" id="for_referencia" placeholder="" name="for_referencia"  rows="3"><?= $row->for_referencia; ?></textarea>
+
                     </div>
 
 
@@ -186,7 +188,7 @@ if (isset ($_POST['name'])) {
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-info">Editar fornecedor</button>
+                    <button type="submit" class="btn btn-primary">Editar Fornecedor</button>
                 </div>
             </form>
         </div>

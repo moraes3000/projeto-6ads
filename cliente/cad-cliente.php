@@ -96,7 +96,7 @@ if (isset ($_POST['name'])  ) {
         <?php endif; ?>
         <form method="post">
             <div class="form-group">
-                <label for="name">Nome da categoria</label>
+                <label for="name">Nome</label>
                 <input type="text" name="name" id="name" class="form-control">
             </div>
             <div class="form-row">
@@ -183,7 +183,8 @@ if (isset ($_POST['name'])  ) {
                 </div>
                 <div class="form-group col-md-12">
                     <label for="c-bairro">Referencia</label>
-                    <input type="text" class="form-control" id="cli_referencia" placeholder="" name="cli_referencia">
+<!--                    <input type="text" class="form-control" id="cli_referencia" placeholder="" name="cli_referencia">-->
+                    <textarea class="form-control" id="cli_referencia" placeholder="" name="cli_referencia"  rows="3"></textarea>
                 </div>
 
 

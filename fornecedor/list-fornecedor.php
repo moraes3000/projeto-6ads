@@ -2,19 +2,34 @@
 /**
  * Created by PhpStorm.
  * User: bruno
- * Date: 30/09/2018
- * Time: 10:59
+ * Date: 29/09/2018
+ * Time: 21:00
  */
 
 
+
+//
 require '../conexao/conexao.php';
 require '../base/header.php';
-$sql = 'SELECT * FROM fornecedor';
+
+
+
+$pesquisa =$_POST['pesquisa'] ;
+
+//echo $pesquisa;
+
+require '../conexao/conexao.php';
+$sql = "SELECT * FROM fornecedor WHERE for_nome LIKE '%$pesquisa%'";
 $statement = $conn->prepare($sql);
 $statement->execute();
 $rows = $statement->fetchAll(PDO::FETCH_OBJ); ?>
     <div class="container">
-        <h1 class="display-4">Lista de fornecedor</h1>
+    <h1 class="display-4">Lista de Produto</h1>
+    <form class="form-group" method="POST" action="list-fornecedor.php">
+        <input  type="text" name="pesquisa">
+        <input type="submit" value="Enviar">
+    </form>
+
         <table class="table table-striped table-bordered  table-hover">
             <thead class="thead-dark">
 
@@ -63,8 +78,8 @@ $rows = $statement->fetchAll(PDO::FETCH_OBJ); ?>
                     <td><?= $row->for_email; ?></td>
 
                     <td>
-                        <a href="edit-fornecedor.php?id=<?= $row->for_id ?>" >  <i class="fas fa-edit "></i></a>
-                        <a onclick="return confirm('Deseja remover esse item')" href="delete-fornecedor.php?id=<?= $row->for_id ?>" class=''> <i class="fas fa-trash-alt float-right"></i></a>
+                        <a href="edit-fornecedor.php?id=<?= $row->for_id ?>" title="Editar" >  <i class="fas fa-edit "></i></a>
+                        <a onclick="return confirm('Deseja remover esse item')" href="delete-fornecedor.php?id=<?= $row->for_id ?>" class='' title="Excluir"> <i class="fas fa-trash-alt float-right"></i></a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -74,7 +89,7 @@ $rows = $statement->fetchAll(PDO::FETCH_OBJ); ?>
 
             </tbody>
         </table>
-        <a href="cad-fornecedor.php" class="btn btn-primary" >Add Fornecedor</a>
+        <a href="cad-fornecedor.php" class="btn btn-primary" >Adicionar Fornecedor</a>
     </div>
 
 

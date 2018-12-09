@@ -71,7 +71,7 @@ if (isset ($_POST['name'])  ) {
                 <?php endif; ?>
                 <form  method="post">
                     <div class="form-group">
-                        <label for="name">Nome da categoria</label>
+                        <label for="name">Nome da produto</label>
                         <input type="text" name="name" id="name" class="form-control">
                     </div>
                     <div class="form-group">
@@ -113,10 +113,10 @@ if (isset ($_POST['name'])  ) {
 
 
                     <div class="form-group">
-                        <label for="p-pro_descricao">descricao</label>
+                        <label for="p-pro_descricao">Descrição</label>
                         <!--            ver o pq  nao  ta indo pelo textarea so vai no input -->
-                        <input type="text" class="form-control" id="descricao" name="descricao" placeholder="">
-                        <!--            <textarea class="form-control" id="p-desc" name=pro_descricao" rows="3"></textarea>-->
+<!--                        <input type="text" class="form-control" id="descricao" name="descricao" placeholder="">-->
+                                    <textarea class="form-control" id="descricao" name="descricao"  rows="3"></textarea>
                     </div>
 
 <!--                    <div class="form-row">-->

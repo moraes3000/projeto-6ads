@@ -72,7 +72,7 @@ if (isset ($_POST['name'])) {
             <form method="post">
 
                     <div class="form-group">
-                        <label for="name">Nome da categoria</label>
+                        <label for="name">Nome</label>
                         <input value="<?= $row->pro_nome; ?>" type="text" name="name" id="name" class="form-control">
                     </div>
                     <div class="form-group">
@@ -121,7 +121,7 @@ if (isset ($_POST['name'])) {
                     </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-info">Editar Produto</button>
+                    <button type="submit" class="btn btn-primary">Editar Produto</button>
                 </div>
             </form>
         </div>
